@@ -1,16 +1,27 @@
+// jalankan pada dartpat.dev
+
+// 3 kondisi
+// uncomplete = menuggu
+// complete ->sukses -> return data
+// comlete -> error ->throw err
+
 void main() {
-  int hasilPenjumlahan = penjumlahan(3, 5);
-  hasilPenjumlahan = hasilPenjumlahan + 2;
-
-  print("Hasil di main: $hasilPenjumlahan");
-  pengurangan(3, 5);
+  print("A");
+  cetakB().then((value) => print("Sukses")).catchError((err)=> print("Eroro"));
+  print("C");
 }
 
-int penjumlahan(int angka1, int angka2) {
-  print("hasil dalam function ${angka1 + angka2}");
-  return angka1 + angka2;
-}
+// void cetakB() {
+//   Future.delayed(Duration(seconds: 2), () {
+//     print("B");
+//   });
+//   print("Berhasil Cetak B");
+// }
 
-void pengurangan(int angka1, int angka2) {
-  print(angka1 - angka2);
+Future<String> cetakB() async {
+  await Future.delayed(Duration(seconds: 2));
+  // perintah di bawah tidak akan dijalankan jika await belum selesai
+  print("B");
+  return "Berhasil Cetak B"; //jika sukses
+  // throw "Tidak Berhasil Cetak B"; //jika gagal
 }
