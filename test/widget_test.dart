@@ -1,25 +1,28 @@
 void main() {
-  // for (var i = 1; i <= 100; i++) {
-  //   print(i);
+  String nama = "KZ";
+
+  // if (nama == "Ahmad") {
+  //   print("Nama dia adalah Ahmad");
+  // } else if (nama == "Ikbal") {
+  //   print("Nama dia adalah Ikbal");
+  // } else if (nama == "Djaya") {
+  //   print("Nama dia adalah Djaya");
+  // } else {
+  //   print("Nama Dia Buka Ahmad, Ikbal, Maupun Djaya, tapi $nama");
   // }
 
-  // int i = 1;
-  // do {
-  //   print(i);
-  //   i++;
-  // } while (i <= 10);
-
-  List<String> motor = ["Mio", "Nmax", "Jupiter"];
-
-  // for (var i = 0; i < motor.length; i++) {
-  //   print("Motor : ${motor[i]}");
-  // }
-
-  motor.forEach((element) {
-    print("Motor : $element");
-  });
-
-  for (var element in motor) {
-    print("Motor : $element");
+  switch (nama) {
+    case "Ahmad":
+      print("Nama dia adalah Ahmad");
+      break;
+    case "Ikbal":
+      print("Nama dia adalah Ikbal");
+      break;
+    case "Djaya":
+      print("Nama dia adalah Djaya");
+      break;
+    default:
+      print("Nama Dia Buka Ahmad, Ikbal, Maupun Djaya, tapi $nama");
+      break;
   }
 }
