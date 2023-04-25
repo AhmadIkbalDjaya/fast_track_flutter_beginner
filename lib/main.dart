@@ -1,19 +1,41 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(AplikasiSaya());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AplikasiSaya extends StatelessWidget {
+  const AplikasiSaya({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFFD5DDAA),
-        // backgroundColor: Colors.amber, // contoh penguunaan enum
-        body: Center(child: Text("Hello World")),
+        backgroundColor: Colors.green,
+        appBar: AppBar(
+          backgroundColor: Colors.red,
+          title: Text("Title"),
+          centerTitle: true,
+        ),
+        body: Center(
+          // Image Provider:
+          // 1. Asset Image
+          //    -> gambar yg ada pda folder project
+          //    -> perlu daftar di pubspac.yaml
+          // 2. Network Image
+          //    -> ambil dari interner
+          //    -> apliksi butuh koneksi internet
+          // jarang digunakan -> pada kasus tertentu
+          // 3. File Image
+          // 4. Memory Image
+
+          // child: Image(
+          //   image: AssetImage("assets/images/gambar.jpg"),
+          // ),
+
+          child: Image.asset("assets/images/gambar.jpg"),
+          
+        ),
       ),
     );
   }
