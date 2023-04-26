@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/kotak_warna.dart';
 
 void main() {
   runApp(AplikasiSaya());
@@ -10,33 +11,28 @@ class AplikasiSaya extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.green,
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: Text("Title"),
-          centerTitle: true,
-        ),
-        body: Center(
-          // Image Provider:
-          // 1. Asset Image
-          //    -> gambar yg ada pda folder project
-          //    -> perlu daftar di pubspac.yaml
-          // 2. Network Image
-          //    -> ambil dari interner
-          //    -> apliksi butuh koneksi internet
-          // jarang digunakan -> pada kasus tertentu
-          // 3. File Image
-          // 4. Memory Image
-
-          // child: Image(
-          //   image: AssetImage("assets/images/gambar.jpg"),
-          // ),
-
-          child: Image.asset("assets/images/gambar.jpg"),
-          
-        ),
-      ),
+          appBar: AppBar(
+            title: Text("Title"),
+            centerTitle: true,
+          ),
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                KotakWarna(text: "Merah", warna: Colors.red),
+                KotakWarna(text: "Kuning", warna: Colors.amber),
+                KotakWarna(text: "Hijau", warna: Colors.green),
+                KotakWarna(text: "Merah", warna: Colors.red),
+                KotakWarna(text: "Kuning", warna: Colors.amber),
+                KotakWarna(text: "Hijau", warna: Colors.green),
+                KotakWarna(text: "Merah", warna: Colors.red),
+                KotakWarna(text: "Kuning", warna: Colors.amber),
+                KotakWarna(text: "Hijau", warna: Colors.green),
+              ],
+            ),
+          )),
     );
   }
 }
