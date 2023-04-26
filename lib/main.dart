@@ -9,52 +9,46 @@ void main() {
 }
 
 class AplikasiSaya extends StatelessWidget {
-  // List<KotakWarna> allItems = List.generate(
-  //   10,
-  //   (index) => KotakWarna(
-  //     text: "Kotak - ${index + 1}",
-  //     warna: Color.fromARGB(
-  //       255,
-  //       Random().nextInt(256),
-  //       Random().nextInt(256),
-  //       Random().nextInt(256),
-  //     ),
-  //   ),
-  // );
-
-  List<Map<String, dynamic>> data = List.generate(
-    10,
-    (index) => {
-      "text": "Kotak - ${index + 1}",
-      "warna": Color.fromARGB(
-        255,
-        Random().nextInt(256),
-        Random().nextInt(256),
-        Random().nextInt(256),
-      ),
-    },
-  );
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("Title"),
-            centerTitle: true,
+        appBar: AppBar(
+          title: Text("Title"),
+          centerTitle: true,
+        ),
+        // body: ListView.builder(
+        //   itemCount: 10,
+        //   itemBuilder: (context, index) => KotakWarna(
+        //     text: "Kotak Ke - ${index + 1}",
+        //     warna: Color.fromARGB(
+        //       255,
+        //       Random().nextInt(256),
+        //       Random().nextInt(256),
+        //       Random().nextInt(256),
+        //     ),
+        //   ),
+        // ),
+        body: GridView.builder(
+          itemCount: 50,
+          padding: EdgeInsets.all(5),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 5,
+            crossAxisSpacing: 5,
+            childAspectRatio: 2 / 1,
           ),
-          body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              // children: allItems, //lansung list of widget
-              children: data
-                  .map(
-                    (e) => KotakWarna(text: e["text"], warna: e["warna"]),
-                  )
-                  .toList(),
+          itemBuilder: (context, index) => Container(
+            color: Color.fromARGB(
+              255,
+              Random().nextInt(256),
+              Random().nextInt(256),
+              Random().nextInt(256),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
