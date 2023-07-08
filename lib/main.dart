@@ -15,42 +15,48 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Statefull"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "$nilai",
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Dialog"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text("Ini Judul"),
+                content: Text(
+                    "Ini adalah deskripsi dari dialog, Ini adalah deskripsi dari dialog"),
+                actions: [
                   ElevatedButton(
-                    onPressed: () {
-                      nilai--;
-                      setState(() {});
-                    },
-                    child: Icon(Icons.remove),
+                    onPressed: () {},
+                    child: Text("Cancel"),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      nilai++;
-                      setState(() {});
-                    },
-                    child: Icon(Icons.add),
+                    onPressed: () {},
+                    child: Text("OK"),
                   ),
                 ],
-              )
-            ],
-          ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            );
+          },
+          child: Text("Show Dialog"),
         ),
       ),
     );
