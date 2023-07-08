@@ -1,54 +1,22 @@
-import 'dart:ffi';
-import 'dart:math';
-
+import 'package:fast_track_flutter_beginner/latihan/soal_20.dart';
+import 'package:fast_track_flutter_beginner/latihan/soal_21.dart';
+import 'package:fast_track_flutter_beginner/latihan/soal_22.dart';
+import 'package:fast_track_flutter_beginner/latihan/soal_23.dart';
+import 'package:fast_track_flutter_beginner/latihan/soal_24.dart';
 import 'package:flutter/material.dart';
-import 'widgets/kotak_warna.dart';
 
 void main() {
-  runApp(AplikasiSaya());
+  runApp(const MyApp());
 }
 
-class AplikasiSaya extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Title"),
-          centerTitle: true,
-        ),
-        // body: ListView.builder(
-        //   itemCount: 10,
-        //   itemBuilder: (context, index) => KotakWarna(
-        //     text: "Kotak Ke - ${index + 1}",
-        //     warna: Color.fromARGB(
-        //       255,
-        //       Random().nextInt(256),
-        //       Random().nextInt(256),
-        //       Random().nextInt(256),
-        //     ),
-        //   ),
-        // ),
-        body: GridView.builder(
-          itemCount: 50,
-          padding: EdgeInsets.all(5),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5,
-            childAspectRatio: 2 / 1,
-          ),
-          itemBuilder: (context, index) => Container(
-            color: Color.fromARGB(
-              255,
-              Random().nextInt(256),
-              Random().nextInt(256),
-              Random().nextInt(256),
-            ),
-          ),
-        ),
-      ),
+      home: Soal24(),
     );
   }
 }
