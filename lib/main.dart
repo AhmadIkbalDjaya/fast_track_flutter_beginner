@@ -7,7 +7,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return MaterialApp(
+      home: HomePage(),
+    );
   }
 }
 
@@ -17,30 +19,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Hapus berhasil"),
-                action: SnackBarAction(
-                  label: "Cancel",
-                  onPressed: () {},
-                  textColor: Colors.white,
-                ),
-                backgroundColor: Colors.red,
-                duration: Duration(seconds: 3),
-                margin: EdgeInsets.all(10),
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
+      body: ListView(
+        padding: EdgeInsets.all(20),
+        children: [
+          TextField(
+            autocorrect: false,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+              label: Text("Email"),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
-            );
-          },
-          child: Text("Show Snack Bar"),
-        ),
+            ),
+          ),
+          TextField(
+            autocorrect: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              label: Text("Password"),
+            ),
+          )
+        ],
       ),
     );
   }
