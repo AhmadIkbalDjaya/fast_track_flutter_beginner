@@ -15,107 +15,69 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  late TabController tabC = TabController(length: 4, vsync: this);
+class _HomePageState extends State<HomePage> {
+  final List data = [
+    {
+      "judul": "Pilihan Ke-1",
+      "data": 1,
+    },
+    {
+      "judul": "Pilihan Ke-2",
+      "data": 2,
+    },
+    {
+      "judul": "Pilihan Ke-3",
+      "data": 3,
+    },
+    {
+      "judul": "Pilihan Ke-4",
+      "data": 4,
+    },
+    {
+      "judul": "Pilihan Ke-5",
+      "data": 5,
+    },
+  ];
+
+  late int dataAwal;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    dataAwal = data[0]["data"];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text("Tab Bar"),
-        centerTitle: false,
-        bottom: TabBar(
-          controller: tabC,
-          tabs: [
-            Tab(
-              child: Icon(Icons.camera_alt),
-            ),
-            Tab(
-              text: "Chats",
-            ),
-            Tab(
-              text: "Status",
-            ),
-            Tab(
-              text: "Calls",
-            ),
-          ],
-        ),
+        title: Text("Drop Down"),
       ),
-      body: TabBarView(
-        controller: tabC,
-        children: [
-          Center(
-            child: Text("Camera"),
-          ),
-          Center(
-            child: Text("Chats"),
-          ),
-          Center(
-            child: Text("Status"),
-          ),
-          Center(
-            child: Text("Calls"),
-          ),
-        ],
+      body: Center(
+        child: DropdownButton<int>(
+          value: dataAwal,
+          items: data
+              .map(
+                (e) => DropdownMenuItem(
+                  child: Text("${e['judul']} "),
+                  value: e['data'] as int,
+                ),
+              )
+              .toList(),
+          onChanged: (value) {
+            setState(() {
+              dataAwal = value!;
+            });
+            print(value);
+          },
+        ),
       ),
     );
   }
 }
-// class HomePage extends StatelessWidget {
-//   const HomePage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return DefaultTabController(
-//       length: 4,
-//       child: Scaffold(
-//         appBar: AppBar(
-//           backgroundColor: Colors.teal,
-//           title: Text("Tab Bar"),
-//           centerTitle: false,
-//           bottom: TabBar(
-//             tabs: [
-//               Tab(
-//                 child: Icon(Icons.camera_alt),
-//               ),
-//               Tab(
-//                 text: "Chats",
-//               ),
-//               Tab(
-//                 text: "Status",
-//               ),
-//               Tab(
-//                 text: "Calls",
-//               ),
-//             ],
-//           ),
-//         ),
-//         body: TabBarView(
-//           children: [
-//             Center(
-//               child: Text("Camera"),
-//             ),
-//             Center(
-//               child: Text("Chats"),
-//             ),
-//             Center(
-//               child: Text("Status"),
-//             ),
-//             Center(
-//               child: Text("Calls"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
