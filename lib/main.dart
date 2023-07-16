@@ -21,80 +21,101 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  bool isHidden = true;
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late TabController tabC = TabController(length: 4, vsync: this);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Text Field"),
+        backgroundColor: Colors.teal,
+        title: Text("Tab Bar"),
+        centerTitle: false,
+        bottom: TabBar(
+          controller: tabC,
+          tabs: [
+            Tab(
+              child: Icon(Icons.camera_alt),
+            ),
+            Tab(
+              text: "Chats",
+            ),
+            Tab(
+              text: "Status",
+            ),
+            Tab(
+              text: "Calls",
+            ),
+          ],
+        ),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(20),
+      body: TabBarView(
+        controller: tabC,
         children: [
-          TextField(
-            controller: emailController,
-            autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              label: Text("Email"),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              prefixIcon: Icon(Icons.email),
-            ),
+          Center(
+            child: Text("Camera"),
           ),
-          SizedBox(height: 20),
-          TextField(
-            controller: passwordController,
-            autocorrect: false,
-            obscureText: isHidden,
-            textInputAction: TextInputAction.done,
-            decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              // label: Text("Password"),
-              labelText: "Password",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              prefixIcon: Icon(Icons.key),
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    isHidden = !isHidden;
-                  });
-                },
-                icon: isHidden
-                    ? Icon(Icons.remove_red_eye)
-                    : Icon(Icons.remove_red_eye_outlined),
-              ),
-            ),
+          Center(
+            child: Text("Chats"),
           ),
-          SizedBox(height: 50),
-          ElevatedButton(
-            onPressed: () {
-              print(
-                  "Login dengan Email: ${emailController.text} dan pass ${passwordController.text}");
-                  
-            },
-            child: Text("LOGIN"),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-            ),
+          Center(
+            child: Text("Status"),
+          ),
+          Center(
+            child: Text("Calls"),
           ),
         ],
       ),
     );
   }
 }
+// class HomePage extends StatelessWidget {
+//   const HomePage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return DefaultTabController(
+//       length: 4,
+//       child: Scaffold(
+//         appBar: AppBar(
+//           backgroundColor: Colors.teal,
+//           title: Text("Tab Bar"),
+//           centerTitle: false,
+//           bottom: TabBar(
+//             tabs: [
+//               Tab(
+//                 child: Icon(Icons.camera_alt),
+//               ),
+//               Tab(
+//                 text: "Chats",
+//               ),
+//               Tab(
+//                 text: "Status",
+//               ),
+//               Tab(
+//                 text: "Calls",
+//               ),
+//             ],
+//           ),
+//         ),
+//         body: TabBarView(
+//           children: [
+//             Center(
+//               child: Text("Camera"),
+//             ),
+//             Center(
+//               child: Text("Chats"),
+//             ),
+//             Center(
+//               child: Text("Status"),
+//             ),
+//             Center(
+//               child: Text("Calls"),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
